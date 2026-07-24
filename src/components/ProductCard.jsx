@@ -2,17 +2,27 @@ function ProductCard({ product, onViewDetails }) {
   return (
     <div className="card">
 
+      <div className="card-top">
+
+        <span className={`badge ${product.badge.toLowerCase().replace(" ", "-")}`}>
+          {product.badge}
+        </span>
+
+        <button className="wishlist-btn">
+          ❤️
+        </button>
+
+      </div>
+
       <div className="product-image">
         {product.image}
       </div>
 
-      <span className="category">
-        {product.category}
-      </span>
+      <h3>{product.name}</h3>
 
-      <h3>
-        {product.name}
-      </h3>
+      <p className="category">
+        {product.category}
+      </p>
 
       <p className="price">
         {product.price}
@@ -27,7 +37,7 @@ function ProductCard({ product, onViewDetails }) {
       </p>
 
       <button
-        className="buy-btn"
+        className="details-btn"
         onClick={() => onViewDetails(product)}
       >
         View Details
