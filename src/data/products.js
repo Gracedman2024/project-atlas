@@ -1,3 +1,10 @@
+import laptop from "../assets/products/laptop.jpg";
+import iphone from "../assets/products/iphone.jpg";
+import samsung from "../assets/products/samsung.jpg";
+import headphones from "../assets/products/headphones.jpg";
+import airfryer from "../assets/products/airfryer.jpg";
+import robotvacuum from "../assets/products/robotvacuum.jpg";
+
 const products = [
 
   {
@@ -7,7 +14,7 @@ const products = [
     price: "₦1,250,000",
     rating: "★★★★★",
     badge: "BEST SELLER",
-    image: "💻",
+    image: laptop,
     description:
       "High-performance gaming laptop with RTX graphics, fast SSD storage, and a powerful processor for gaming, AI development, and professional work."
   },
@@ -19,7 +26,7 @@ const products = [
     price: "₦2,150,000",
     rating: "★★★★★",
     badge: "NEW",
-    image: "📱",
+    image: iphone,
     description:
       "Apple's latest flagship smartphone featuring a premium camera system, exceptional battery life, and industry-leading performance."
   },
@@ -31,7 +38,7 @@ const products = [
     price: "₦1,800,000",
     rating: "★★★★★",
     badge: "NEW",
-    image: "📱",
+    image: samsung,
     description:
       "Premium Android flagship with Galaxy AI features, advanced cameras, and a vibrant AMOLED display."
   },
@@ -43,7 +50,7 @@ const products = [
     price: "₦180,000",
     rating: "★★★★☆",
     badge: "SALE",
-    image: "🎧",
+    image: headphones,
     description:
       "Comfortable wireless headphones with active noise cancellation and long-lasting battery life."
   },
@@ -55,7 +62,7 @@ const products = [
     price: "₦220,000",
     rating: "★★★★★",
     badge: "BEST SELLER",
-    image: "🍳",
+    image: airfryer,
     description:
       "Cook healthier meals with smart presets, rapid air circulation, and easy digital controls."
   },
@@ -67,7 +74,7 @@ const products = [
     price: "₦410,000",
     rating: "★★★★☆",
     badge: "SALE",
-    image: "🤖",
+    image: robotvacuum,
     description:
       "Smart robot vacuum with automatic mapping, obstacle detection, and scheduled cleaning."
   }

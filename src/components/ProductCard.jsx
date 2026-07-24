@@ -15,8 +15,14 @@ function ProductCard({ product, onViewDetails }) {
       </div>
 
       <div className="product-image">
-        {product.image}
-      </div>
+
+  <img
+    src={product.image}
+    alt={product.name}
+    className="product-photo"
+  />
+
+</div>
 
       <h3>{product.name}</h3>
 
