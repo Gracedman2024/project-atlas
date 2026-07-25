@@ -1,4 +1,4 @@
-function Navbar() {
+function Navbar({ wishlistCount }) {
   return (
     <header className="navbar">
 
@@ -15,6 +15,10 @@ function Navbar() {
         <a href="#">Products</a>
 
         <a href="#">Reviews</a>
+
+        <a href="#">
+  ❤️ Wishlist ({wishlistCount})
+</a>
 
         <a href="#">About</a>
 

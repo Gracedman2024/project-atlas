@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar />
+      <Navbar wishlistCount={wishlist.length} />
 
       <Hero />
 
