@@ -1,6 +1,11 @@
 import ProductCard from "./ProductCard";
 
-function SearchResults({ products, onViewDetails }) {
+function SearchResults({
+  products,
+  onViewDetails,
+  wishlist,
+  toggleWishlist
+}) {
 
   if (products.length === 0) {
 
@@ -23,10 +28,12 @@ function SearchResults({ products, onViewDetails }) {
         {products.map((product) => (
 
           <ProductCard
-            key={product.id}
-            product={product}
-            onViewDetails={onViewDetails}
-          />
+  key={product.id}
+  product={product}
+  onViewDetails={onViewDetails}
+  wishlist={wishlist}
+  toggleWishlist={toggleWishlist}
+/>
 
         ))}
 

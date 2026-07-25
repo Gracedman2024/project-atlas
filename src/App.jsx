@@ -12,26 +12,27 @@ import Footer from "./components/Footer";
 import products from "./data/products";
 
 function App() {
-
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [wishlist, setWishlist] = useState([]);
 
   const filteredProducts = products.filter((product) => {
-
     return (
-
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-
       product.category.toLowerCase().includes(searchTerm.toLowerCase())
-
     );
-
   });
 
+  const toggleWishlist = (productId) => {
+    if (wishlist.includes(productId)) {
+      setWishlist(wishlist.filter((id) => id !== productId));
+    } else {
+      setWishlist([...wishlist, productId]);
+    }
+  };
+
   return (
-
     <div className="app">
-
       <Navbar />
 
       <Hero />
@@ -42,18 +43,18 @@ function App() {
       />
 
       {searchTerm === "" ? (
-
         <FeaturedProducts
           onViewDetails={setSelectedProduct}
+          wishlist={wishlist}
+          toggleWishlist={toggleWishlist}
         />
-
       ) : (
-
         <SearchResults
-          products={filteredProducts}
-          onViewDetails={setSelectedProduct}
-        />
-
+  products={filteredProducts}
+  onViewDetails={setSelectedProduct}
+  wishlist={wishlist}
+  toggleWishlist={toggleWishlist}
+/>
       )}
 
       <ProductModal
@@ -62,11 +63,8 @@ function App() {
       />
 
       <Footer />
-
     </div>
-
   );
-
 }
 
 export default App;

@@ -1,4 +1,9 @@
-function ProductCard({ product, onViewDetails }) {
+function ProductCard({
+  product,
+  onViewDetails,
+  wishlist,
+  toggleWishlist
+}) {
   return (
     <div className="card">
 
@@ -8,9 +13,12 @@ function ProductCard({ product, onViewDetails }) {
           {product.badge}
         </span>
 
-        <button className="wishlist-btn">
-          ❤️
-        </button>
+        <button
+  className="wishlist-btn"
+  onClick={() => toggleWishlist(product.id)}
+>
+  {wishlist.includes(product.id) ? "❤️" : "🤍"}
+</button>
 
       </div>
 
