@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 import Navbar from "./components/Navbar";
@@ -14,7 +14,22 @@ import products from "./data/products";
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [wishlist, setWishlist] = useState([]);
+  const [wishlist, setWishlist] = useState(() => {
+
+  const savedWishlist = localStorage.getItem("wishlist");
+
+  return savedWishlist ? JSON.parse(savedWishlist) : [];
+
+});
+
+useEffect(() => {
+
+  localStorage.setItem(
+    "wishlist",
+    JSON.stringify(wishlist)
+  );
+
+}, [wishlist]);
 
   const filteredProducts = products.filter((product) => {
     return (
