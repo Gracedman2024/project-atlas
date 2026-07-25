@@ -2,7 +2,9 @@ function ProductCard({
   product,
   onViewDetails,
   wishlist,
-  toggleWishlist
+  toggleWishlist,
+  comparisonList,
+  toggleComparison
 }) {
   return (
     <div className="card">
@@ -49,6 +51,22 @@ function ProductCard({
       <p className="description">
         {product.description}
       </p>
+
+      <div className="compare-option">
+
+  <label>
+
+    <input
+      type="checkbox"
+      checked={comparisonList.includes(product.id)}
+      onChange={() => toggleComparison(product.id)}
+    />
+
+    Compare
+
+  </label>
+
+</div>
 
       <button
         className="details-btn"

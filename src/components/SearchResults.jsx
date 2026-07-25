@@ -4,7 +4,9 @@ function SearchResults({
   products,
   onViewDetails,
   wishlist,
-  toggleWishlist
+  toggleWishlist,
+  comparisonList,
+  toggleComparison
 }) {
 
   if (products.length === 0) {
@@ -33,6 +35,8 @@ function SearchResults({
   onViewDetails={onViewDetails}
   wishlist={wishlist}
   toggleWishlist={toggleWishlist}
+  comparisonList={comparisonList}
+  toggleComparison={toggleComparison}
 />
 
         ))}

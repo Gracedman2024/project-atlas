@@ -15,12 +15,15 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [wishlist, setWishlist] = useState(() => {
+  
 
   const savedWishlist = localStorage.getItem("wishlist");
 
   return savedWishlist ? JSON.parse(savedWishlist) : [];
 
 });
+
+const [comparisonList, setComparisonList] = useState([]);
 
 useEffect(() => {
 
@@ -46,6 +49,33 @@ useEffect(() => {
     }
   };
 
+  const toggleComparison = (productId) => {
+
+  if (comparisonList.includes(productId)) {
+
+    setComparisonList(
+      comparisonList.filter((id) => id !== productId)
+    );
+
+  } else {
+
+    if (comparisonList.length >= 2) {
+
+      alert("You can compare only two products at a time.");
+
+      return;
+
+    }
+
+    setComparisonList([
+      ...comparisonList,
+      productId
+    ]);
+
+  }
+
+};
+
   return (
     <div className="app">
       <Navbar wishlistCount={wishlist.length} />
@@ -58,17 +88,21 @@ useEffect(() => {
       />
 
       {searchTerm === "" ? (
-        <FeaturedProducts
-          onViewDetails={setSelectedProduct}
-          wishlist={wishlist}
-          toggleWishlist={toggleWishlist}
-        />
+      <FeaturedProducts
+  onViewDetails={setSelectedProduct}
+  wishlist={wishlist}
+  toggleWishlist={toggleWishlist}
+  comparisonList={comparisonList}
+  toggleComparison={toggleComparison}
+/>
       ) : (
-        <SearchResults
+      <SearchResults
   products={filteredProducts}
   onViewDetails={setSelectedProduct}
   wishlist={wishlist}
   toggleWishlist={toggleWishlist}
+  comparisonList={comparisonList}
+  toggleComparison={toggleComparison}
 />
       )}
 

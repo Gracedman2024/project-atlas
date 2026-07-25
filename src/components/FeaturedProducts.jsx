@@ -4,7 +4,9 @@ import ProductCard from "./ProductCard";
 function FeaturedProducts({
   onViewDetails,
   wishlist,
-  toggleWishlist
+  toggleWishlist,
+  comparisonList,
+  toggleComparison
 }) {
   return (
     <section className="products">
@@ -17,12 +19,14 @@ function FeaturedProducts({
 
         {products.map((product) => (
 
-          <ProductCard
+        <ProductCard
   key={product.id}
   product={product}
   onViewDetails={onViewDetails}
   wishlist={wishlist}
   toggleWishlist={toggleWishlist}
+  comparisonList={comparisonList}
+  toggleComparison={toggleComparison}
 />
 
         ))}
