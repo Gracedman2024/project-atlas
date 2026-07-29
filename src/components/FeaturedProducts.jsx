@@ -6,7 +6,8 @@ function FeaturedProducts({
   wishlist,
   toggleWishlist,
   comparisonList,
-  toggleComparison
+  toggleComparison,
+  addToCart
 }) {
   return (
     <section className="products">
@@ -27,6 +28,7 @@ function FeaturedProducts({
   toggleWishlist={toggleWishlist}
   comparisonList={comparisonList}
   toggleComparison={toggleComparison}
+  addToCart={addToCart}
 />
 
         ))}

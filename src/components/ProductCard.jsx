@@ -4,9 +4,10 @@ function ProductCard({
   wishlist,
   toggleWishlist,
   comparisonList,
-  toggleComparison
+  toggleComparison,
+  addToCart
 }) {
-  return (
+return (
     <div className="card">
 
       <div className="card-top">
@@ -68,12 +69,23 @@ function ProductCard({
 
 </div>
 
-      <button
-        className="details-btn"
-        onClick={() => onViewDetails(product)}
-      >
-        View Details
-      </button>
+<div className="card-buttons">
+
+  <button
+    className="details-btn"
+    onClick={() => onViewDetails(product)}
+  >
+    View Details
+  </button>
+
+  <button
+    className="cart-btn"
+    onClick={() => addToCart(product)}
+  >
+    Add to Cart
+  </button>
+
+</div>
 
     </div>
   );

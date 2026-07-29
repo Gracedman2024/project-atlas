@@ -1,4 +1,10 @@
-function Navbar({ wishlistCount }) {
+import "./Navbar.css";
+
+function Navbar({
+  wishlistCount,
+  cartCount,
+  onCartClick
+}) {
   return (
     <header className="navbar">
 
@@ -8,21 +14,40 @@ function Navbar({ wishlistCount }) {
 
       <nav>
 
-        <a href="#">Home</a>
-
-        <a href="#">Categories</a>
-
-        <a href="#">Products</a>
-
-        <a href="#">Reviews</a>
+        <a href="#">
+          Home
+        </a>
 
         <a href="#">
-  ❤️ Wishlist ({wishlistCount})
-</a>
+          Categories
+        </a>
 
-        <a href="#">About</a>
+        <a href="#">
+          Products
+        </a>
 
-        <a href="#">Contact</a>
+        <a href="#">
+          Reviews
+        </a>
+
+        <a href="#">
+          ❤️ Wishlist ({wishlistCount})
+        </a>
+
+        <button
+          className="cart-nav-btn"
+          onClick={onCartClick}
+        >
+          🛒 Cart ({cartCount})
+        </button>
+
+        <a href="#">
+          About
+        </a>
+
+        <a href="#">
+          Contact
+        </a>
 
       </nav>
 
