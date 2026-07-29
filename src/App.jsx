@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import SearchBar from "./components/SearchBar";
+import AIAssistant from "./components/AIAssistant";
 import FeaturedProducts from "./components/FeaturedProducts";
 import SearchResults from "./components/SearchResults";
 import ProductModal from "./components/ProductModal";
@@ -210,6 +211,8 @@ function App() {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
+
+      <AIAssistant />
 
       <ComparisonPanel
         products={comparedProducts}
