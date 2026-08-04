@@ -17,6 +17,8 @@ function AIAssistant({
   },
 ]);
 
+const [conversationStep, setConversationStep] = useState("idle");
+
 const getRecommendation = (question) => {
   const search = question.toLowerCase();
 
@@ -182,9 +184,51 @@ const getRecommendedProduct = (question) => {
 };
 
   const handleAsk = () => {
+    console.log("Current conversation step:", conversationStep);
+
   if (question.trim() === "") {
     return;
   }
+
+if (
+  conversationStep === "idle" &&
+  question.toLowerCase().includes("laptop")
+) {
+  setMessages((previousMessages) => [
+    ...previousMessages,
+    {
+      sender: "user",
+      text: question,
+    },
+    {
+      sender: "atlas",
+      text: "Great choice! 💻 Before I recommend a laptop, what's your budget?",
+    },
+  ]);
+
+  setConversationStep("waiting-budget");
+  setQuestion("");
+  return;
+}
+
+if (conversationStep === "waiting-budget") {
+  setMessages((previousMessages) => [
+    ...previousMessages,
+    {
+      sender: "user",
+      text: question,
+    },
+    {
+      sender: "atlas",
+      text:
+        "Excellent! 👍 Now tell me, what will you mainly use the laptop for?\n\n• Gaming\n• Programming\n• School\n• Office Work",
+    },
+  ]);
+
+  setConversationStep("waiting-purpose");
+  setQuestion("");
+  return;
+}
 
   setMessages((previousMessages) => [
     ...previousMessages,
@@ -202,6 +246,18 @@ const getRecommendedProduct = (question) => {
   setQuestion("");
 };
 
+const handleNewChat = () => {
+  setMessages([
+    {
+      sender: "atlas",
+      text: "👋 Welcome! Ask me about phones, laptops, kitchen appliances, headphones, or home products.",
+    },
+  ]);
+
+  setConversationStep("idle");
+  setQuestion("");
+};
+
   return (
     <section className="ai-section">
       <div className="ai-container">
@@ -213,6 +269,11 @@ const getRecommendedProduct = (question) => {
             Tell ATLAS what you're looking for and receive
             intelligent shopping recommendations.
           </p>
+
+           <button onClick={handleNewChat}>
+    + New Chat
+  </button>
+
         </div>
 
         <div className="ai-chat">
