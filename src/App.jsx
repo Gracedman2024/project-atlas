@@ -212,7 +212,10 @@ function App() {
         setSearchTerm={setSearchTerm}
       />
 
-      <AIAssistant />
+      <AIAssistant
+  onViewDetails={setSelectedProduct}
+  addToCart={addToCart}
+/>
 
       <ComparisonPanel
         products={comparedProducts}

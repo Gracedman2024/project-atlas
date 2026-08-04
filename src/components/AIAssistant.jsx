@@ -1,7 +1,12 @@
 import { useState } from "react";
 import products from "../data/products";
+import AIProductCard from "./AIProductCard";
 
-function AIAssistant() {
+function AIAssistant({
+  onViewDetails,
+  addToCart,
+}) {
+
   const [question, setQuestion] = useState("");
 
   const [messages, setMessages] = useState([
@@ -117,6 +122,65 @@ const getRecommendation = (question) => {
   return "I couldn't find an exact match. Try asking about gaming laptops, photography phones, Android phones, headphones, cooking appliances, or home cleaning products.";
 };
 
+const getRecommendedProduct = (question) => {
+  const search = question.toLowerCase();
+
+  if (
+    search.includes("camera") ||
+    search.includes("photography") ||
+    search.includes("photo") ||
+    search.includes("iphone") ||
+    search.includes("apple")
+  ) {
+    return products.find((p) => p.name === "iPhone 17 Pro") || null;
+  }
+
+  if (
+    search.includes("android") ||
+    search.includes("galaxy") ||
+    search.includes("samsung")
+  ) {
+    return products.find((p) => p.name === "Samsung Galaxy S26") || null;
+  }
+
+  if (
+    search.includes("gaming") ||
+    search.includes("developer") ||
+    search.includes("programming") ||
+    search.includes("laptop")
+  ) {
+    return products.find((p) => p.name === "Gaming Laptop") || null;
+  }
+
+  if (
+    search.includes("music") ||
+    search.includes("headphones") ||
+    search.includes("noise") ||
+    search.includes("audio")
+  ) {
+    return products.find((p) => p.name === "Wireless Headphones") || null;
+  }
+
+  if (
+    search.includes("cook") ||
+    search.includes("cooking") ||
+    search.includes("kitchen") ||
+    search.includes("healthy")
+  ) {
+    return products.find((p) => p.name === "Smart Air Fryer") || null;
+  }
+
+  if (
+    search.includes("clean") ||
+    search.includes("vacuum") ||
+    search.includes("home")
+  ) {
+    return products.find((p) => p.name === "Robot Vacuum") || null;
+  }
+
+  return null;
+};
+
   const handleAsk = () => {
   if (question.trim() === "") {
     return;
@@ -128,9 +192,10 @@ const getRecommendation = (question) => {
       sender: "user",
       text: question,
     },
-    {
+{
   sender: "atlas",
   text: getRecommendation(question),
+  product: getRecommendedProduct(question),
 },
   ]);
 
@@ -153,13 +218,22 @@ const getRecommendation = (question) => {
         <div className="ai-chat">
 
   {messages.map((message, index) => (
-    <div
-      key={index}
-      className={`message ${message.sender}`}
-    >
+  <div key={index}>
+
+    <div className={`message ${message.sender}`}>
       {message.text}
     </div>
-  ))}
+
+    {message.product && (
+      <AIProductCard
+  product={message.product}
+  onViewDetails={onViewDetails}
+  addToCart={addToCart}
+/>
+    )}
+
+  </div>
+))}
 
 </div>
 
