@@ -19,6 +19,18 @@ function AIAssistant({
 
 const [conversationStep, setConversationStep] = useState("idle");
 
+const handleNewChat = () => {
+  setMessages([
+    {
+      sender: "atlas",
+      text: "👋 Welcome! Ask me about phones, laptops, kitchen appliances, headphones, or home products.",
+    },
+  ]);
+
+  setConversationStep("idle");
+  setQuestion("");
+};
+
 const getRecommendation = (question) => {
   const search = question.toLowerCase();
 
@@ -243,18 +255,6 @@ if (conversationStep === "waiting-budget") {
 },
   ]);
 
-  setQuestion("");
-};
-
-const handleNewChat = () => {
-  setMessages([
-    {
-      sender: "atlas",
-      text: "👋 Welcome! Ask me about phones, laptops, kitchen appliances, headphones, or home products.",
-    },
-  ]);
-
-  setConversationStep("idle");
   setQuestion("");
 };
 
